@@ -15,7 +15,7 @@ apt-cache policy docker-ce
 
 echo "install docker"
 sudo apt install docker-ce
-sudo systemctl status docker
+
 
 echo "check docker version"
 docker --version
@@ -23,4 +23,3 @@ docker --version
 echo "add user to docker group"
 sudo usermod -aG docker ${USER}
 
-sudo usermod -aG docker username
