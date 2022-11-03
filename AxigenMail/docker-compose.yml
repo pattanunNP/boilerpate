@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  axigen:
+    image: axigen/axigen:beta
+
+    ports:
+      - "21:21"
+      - "25:25"
+      - "110:110"
+      - "443:443"
+      - "465:465"
+      - "995:995"
+      - "7001:7000"
+      - "9000:9000"
+      - "9443:9443"
+
+    volumes:
+      - /var/axigen_var:/axigen/var
+  
+    restart: always
+
+    networks:
+      - nginx-proxy-manager_default
+
+networks:
+  nginx-proxy-manager_default:
+    external: true
+
+#GBP7CNKCQDZkBDxdZjFU axigen
