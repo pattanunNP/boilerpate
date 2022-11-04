@@ -83,8 +83,26 @@ define( 'AUTH_SALT',        getenv_docker('WORDPRESS_AUTH_SALT',        'put you
 define( 'SECURE_AUTH_SALT', getenv_docker('WORDPRESS_SECURE_AUTH_SALT', 'put your unique phrase here') );
 define( 'LOGGED_IN_SALT',   getenv_docker('WORDPRESS_LOGGED_IN_SALT',   'put your unique phrase here') );
 define( 'NONCE_SALT',       getenv_docker('WORDPRESS_NONCE_SALT',       'put your unique phrase here') );
+
+
 // (See also https://wordpress.stackexchange.com/a/152905/199287)
 
+define('WP_HOME','https://boostcamp.standupcode.tech');
+define('WP_SITEURL','https://boostcamp.standupcode.tech');
+
+define( 'WP_CONTENT_DIR', dirname(__FILE__) . '/files/wp-content' );
+define( 'WP_CONTENT_URL', 'http://mysite.com/files/wp-content' );
+
+define( 'WP_PLUGIN_DIR', dirname(__FILE__) . '/files/wp-content/plugins' );
+define( 'WP_PLUGIN_URL', 'https://boostcamp.standupcode.tech/files/wp-content/plugins' );
+
+
+define( 'UPLOADS', 'wp-content/media' );
+
+
+define( 'AUTOMATIC_UPDATER_DISABLED', true );
+define( 'WP_AUTO_UPDATE_CORE', true );
+define( 'WP_AUTO_UPDATE_CORE', minor );
 /**#@-*/
 
 /**

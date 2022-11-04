@@ -5,7 +5,7 @@ services:
      image: mysql:5.7
      volumes:
        - db_data:/var/lib/mysql
-       - wp-config.php:/var/www/html/wp-config.php
+       - ./wp-config.php:/var/www/html/wp-config.php
      restart: always
      environment:
        MYSQL_ROOT_PASSWORD: atQyLYtN8Gj7LDBb
