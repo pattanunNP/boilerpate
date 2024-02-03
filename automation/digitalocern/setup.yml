@@ -1,0 +1,49 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Install necessary packages
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+        state: present
+        update_cache: yes
+
+    - name: Add Docker’s official GPG key
+      ansible.builtin.apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker apt repository
+      ansible.builtin.apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+        state: present
+
+    - name: Install Docker CE
+      apt:
+        name: docker-ce
+        state: present
+        update_cache: yes
+
+    - name: Install Docker Compose
+      get_url:
+        url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)
+        dest: /usr/local/bin/docker-compose
+        mode: '0755'
+
+    - name: Create directory for Nginx Proxy Manager
+      ansible.builtin.file:
+        path: /root/nginx-proxy-manager
+        state: directory
+
+    - name: Copy Nginx Proxy Manager Docker Compose file
+      copy:
+        src: /path/to/your/nginx-proxy-manager/docker-compose.yml
+        dest: /root/nginx-proxy-manager/docker-compose.yml
+
+    - name: Start Nginx Proxy Manager
+      ansible.builtin.shell: docker-compose up -d
+      args:
+        chdir: /root/nginx-proxy-manager/
